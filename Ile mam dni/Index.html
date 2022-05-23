@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Ile mam dni?</title>
+</head>
+
+<body>
+    <div id="interface">
+        <fieldset>
+            <legend>Projekt - Ile mam dni?</legend>
+            <h2>Wprowadź datę, aby dowiedzieć się ile dni minęło.</h2>
+            <input type="date" id="data">
+            <button onclick="oblicz()">Oblicz</button>
+            <h4>Aktualnie mamy datę:</h4>
+            <input type="text" id="aktualna" readonly>
+            <h4>Liczba dni, która minęła od podanej daty:</h4>
+            <input type="text" id="wynik" name="wynik" readonly>
+        </fieldset>
+    </div>
+
+    <script>
+
+        var data = new Date();
+        var aktualna = data.getDate() + "-" + (data.getMonth() + 1) + "-" + data.getFullYear() + " " + data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds();
+        document.getElementById("aktualna").value = aktualna;
+
+        function oblicz() {
+            var dzis = new Date();
+            var wynik = document.getElementById("data").valueAsDate;
+            document.getElementById("wynik").value = Math.floor((dzis.getTime() - wynik.getTime()) / 1000 / 60 / 60 / 24);
+
+        }
+    </script>
+
+</body>
+
+</html>
